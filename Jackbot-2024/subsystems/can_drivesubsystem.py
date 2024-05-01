@@ -27,8 +27,8 @@ class DriveSubsystem(commands2.Subsystem):
 
         self.tankDrive = wpilib.drive.DifferentialDrive(self.left, self.right)
 
-        self.left1.setInverted(True)
-        self.left2.setInverted(True)
+        self.right1.setInverted(True)
+        self.right2.setInverted(True)
 
        
     def calculateDriving(self):

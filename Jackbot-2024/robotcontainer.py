@@ -18,6 +18,7 @@ from commands.preparelaunch import PrepareLaunch
 
 from subsystems.can_drivesubsystem import DriveSubsystem
 from subsystems.can_launchersubsystem import LauncherSubsystem
+from subsystems.can_armsubsystem import ArmSubsystem
 
 class RobotContainer:
     """
@@ -40,6 +41,7 @@ class RobotContainer:
 
         self.launcher = LauncherSubsystem()
         self.drive = DriveSubsystem(self)
+        self.arm = ArmSubsystem(self)
         self.configureButtonBindings()
 
     def configureButtonBindings(self):

@@ -28,6 +28,9 @@ kDTCurrentLimit = 60
 kFeederMotor = 5
 kLauncherMotor = 6
 
+kArmMotor1 = 7
+kArmMotor2 = 8 
+
 kLauncherSpeed = 1
 kLaunchFeederSpeed = 1
 kIntakeLauncherSpeed = -1

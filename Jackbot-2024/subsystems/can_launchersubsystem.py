@@ -14,8 +14,8 @@ class LauncherSubsystem(commands2.Subsystem):
     def __init__(self) -> None:
         super().__init__()
         # Initialize the two motors of the launcher subsystem
-        self.feedWheel = phoenix5.TalonFX(constants.kFeederMotor)
-        self.launchWheel = phoenix5.TalonFX(constants.kLauncherMotor)
+        self.feedWheel = phoenix5.WPI_TalonFX(constants.kFeederMotor)
+        self.launchWheel = phoenix5.WPI_TalonFX(constants.kLauncherMotor)
 
 
     def getIntakeCommand(self) -> commands2.Command:
