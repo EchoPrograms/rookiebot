@@ -27,11 +27,11 @@ kDTCurrentLimit = 60
 # Launcher
 kFeederMotor = 5
 kLauncherMotor = 6
-kLauncherCurrentLimit = 80
-kFeedCurrentLimit = 80
 
 kLauncherSpeed = 1
 kLaunchFeederSpeed = 1
 kIntakeLauncherSpeed = -1
 kIntakeFeederSpeed = -0.2
 kLauncherDelay = 1
+
+kTankDriveSpeedMultiplier = 0.75

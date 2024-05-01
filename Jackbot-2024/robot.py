@@ -11,7 +11,6 @@ import commands2
 
 from robotcontainer import RobotContainer
 
-
 class MyRobot(commands2.TimedCommandRobot):
     """
     Our default robot class, pass it to wpilib.run
@@ -57,7 +56,7 @@ class MyRobot(commands2.TimedCommandRobot):
             self.autonomousCommand.cancel()
 
     def teleopPeriodic(self) -> None:
-        """This function is called periodically during operator control"""
+        self.container.drive.calculateDriving()
 
     def testInit(self) -> None:
         # Cancels all running commands at the start of test mode

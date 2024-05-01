@@ -37,9 +37,9 @@ class RobotContainer:
         )
 
         # The robot's subsystems
-        self.drive = DriveSubsystem()
-        self.launcher = LauncherSubsystem()
 
+        self.launcher = LauncherSubsystem()
+        self.drive = DriveSubsystem(self)
         self.configureButtonBindings()
 
     def configureButtonBindings(self):
@@ -54,6 +54,6 @@ class RobotContainer:
 
     def getAutonomousCommand(self) -> commands2.Command:
         return Autos.exampleAuto(self.drive)
-    
-    def telopPeriodic(self):
-        self.drive.calculateDriving(self)
+
+
+        
