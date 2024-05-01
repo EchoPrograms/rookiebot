@@ -36,7 +36,7 @@ class DriveSubsystem(commands2.Subsystem):
         turnAxis = -self.container.driverController.getRawAxis(4)
         
         if(abs(forwardAxis) > 0.1 or abs(turnAxis) > 0.1):
-            self.tankDrive.tankDrive(constants.kTankDriveSpeedMultiplier*forwardAxis, constants.kTankDriveSpeedMultiplier*turnAxis)
+            self.tankDrive.arcadeDrive(constants.kTankDriveSpeedMultiplier*forwardAxis, constants.kTankDriveSpeedMultiplier*turnAxis)
 
         
         
