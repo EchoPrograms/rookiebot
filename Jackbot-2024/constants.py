@@ -35,3 +35,12 @@ kIntakeFeederSpeed = -0.2
 kLauncherDelay = 1
 
 kTankDriveSpeedMultiplier = 0.75
+
+kvVoltSecondsPerMeter = 2.3148
+kDrivetrainWheelDiameterMeters = 4 * 0.0254  
+kEncoderCPR = 2048                                               
+kDrivetrainGearRatio = 7
+kDrivetrainEncoderDistancePerPulse = (kDrivetrainWheelDiameterMeters * math.pi) / (kEncoderCPR * kDrivetrainGearRatio)
+kaVoltSecondsSquaredPerMeter = 0.2779
+kTrackWidthMeters = 0.585
+kDrivetrainMotorCount = 4

@@ -22,13 +22,16 @@ class DriveSubsystem(commands2.Subsystem):
         self.right1 = phoenix5.WPI_TalonFX(constants.kRightMotor1Port)
         self.right2 = phoenix5.WPI_TalonFX(constants.kRightMotor2Port)
 
+
+        self.right1.setInverted(True)
+        self.right2.setInverted(True)
+        
         self.left = wpilib.MotorControllerGroup(self.left1, self.left2)
         self.right = wpilib.MotorControllerGroup(self.right1, self.right2)
 
         self.tankDrive = wpilib.drive.DifferentialDrive(self.left, self.right)
 
-        self.left1.setInverted(True)
-        self.left2.setInverted(True)
+        
 
        
     def calculateDriving(self):
