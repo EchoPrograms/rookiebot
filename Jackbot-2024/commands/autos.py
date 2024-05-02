@@ -19,9 +19,9 @@ class Autos(commands2.Command):
 
     def exampleAuto(self) -> commands2.Command:
         return (
-            commands2.cmd.run(lambda: self.drive.arcadeDrive(-0.5, 0), self.drive)
-            .withTimeout(1.0)
+            commands2.cmd.run(lambda: self.arcadeDrive(-constants.kTankDriveSpeedMultiplier, 0), self)
+            .withTimeout(2.4)
             .andThen(
-                commands2.cmd.run(lambda: self.drive.arcadeDrive(0, 0), self.drive)
+                commands2.cmd.run(lambda: self.arcadeDrive(0, 0), self)
             )
         )

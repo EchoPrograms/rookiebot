@@ -30,6 +30,9 @@ class MyRobot(commands2.TimedCommandRobot):
         # autonomous chooser on the dashboard.
         self.container = RobotContainer()
 
+    def robotPeriodic(self) -> None:
+        self.container.drive.calculateSim()
+
     def disabledInit(self) -> None:
         """This function is called once each time the robot enters Disabled mode."""
 
@@ -56,7 +59,6 @@ class MyRobot(commands2.TimedCommandRobot):
 
     def teleopPeriodic(self) -> None:
         self.container.drive.calculateDriving()
-        self.container.drive.calculateSim()
 
     def testInit(self) -> None:
         # Cancels all running commands at the start of test mode

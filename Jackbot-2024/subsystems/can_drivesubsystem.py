@@ -32,6 +32,12 @@ class DriveSubsystem(commands2.Subsystem):
         self.left = wpilib.MotorControllerGroup(self.left1, self.left2)
         self.right = wpilib.MotorControllerGroup(self.right1, self.right2)
         self.tankDrive = wpilib.drive.DifferentialDrive(self.left, self.right)
+        
+        self.robotData[0] = constants.kStartingX
+        self.robotData[1] = constants.kStartingY
+        self.robotData[2] = constants.kStartingRot
+        
+        
 
         
 
@@ -51,6 +57,9 @@ class DriveSubsystem(commands2.Subsystem):
         self.robotData[1] += math.sin(math.radians(self.robotData[2])) * fowardSpeed
         self.robotData[2] += (rightPower - leftPower) * constants.kSimulatedTurnRateConstant
         wpilib.SmartDashboard.putNumberArray("Field/Robot", self.robotData)
+
+    def arcadeDrive(self, speed, turn):
+        self.tankDrive.arcadeDrive(speed, turn)
 
         
 
