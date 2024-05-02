@@ -36,7 +36,7 @@
           "open": true
         }
       },
-      "Talon FX[2]": {
+      "Talon FX[3]": {
         "header": {
           "open": true
         }
@@ -52,21 +52,57 @@
         }
       }
     },
-    "PWM Outputs": {
+    "Timing": {
       "window": {
-        "visible": true
+        "visible": false
       }
     }
   },
   "NTProvider": {
     "types": {
-      "/FMSInfo": "FMSInfo"
+      "/FMSInfo": "FMSInfo",
+      "/SmartDashboard/Field": "Field2d"
+    },
+    "windows": {
+      "/SmartDashboard/Field": {
+        "bottom": 1476,
+        "height": 8.210550308227539,
+        "left": 150,
+        "right": 2961,
+        "top": 79,
+        "width": 16.541748046875,
+        "window": {
+          "visible": true
+        }
+      }
+    }
+  },
+  "NetworkTables": {
+    "transitory": {
+      "FMSInfo": {
+        "open": true
+      },
+      "LiveWindow": {
+        ".status": {
+          "open": true
+        },
+        "open": true
+      },
+      "Shuffleboard": {
+        "open": true
+      },
+      "SmartDashboard": {
+        "Field": {
+          "double[]##v_/SmartDashboard/Field/Robot": {
+            "open": true
+          },
+          "open": true
+        },
+        "open": true
+      }
     }
   },
   "NetworkTables Info": {
-    "Clients": {
-      "open": true
-    },
     "Server": {
       "Publishers": {
         "open": true
@@ -75,7 +111,13 @@
         "open": true
       },
       "open": true
-    },
-    "visible": true
+    }
+  },
+  "Plot": {
+    "Plot <0>": {
+      "window": {
+        "visible": false
+      }
+    }
   }
 }

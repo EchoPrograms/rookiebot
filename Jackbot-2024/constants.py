@@ -38,3 +38,5 @@ kIntakeFeederSpeed = -0.2
 kLauncherDelay = 1
 
 kTankDriveSpeedMultiplier = 0.75
+kSimulatedTimeConstant = 0.02
+kSimulatedTurnRateConstant = 2

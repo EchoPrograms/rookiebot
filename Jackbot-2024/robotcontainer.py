@@ -20,6 +20,8 @@ from subsystems.can_drivesubsystem import DriveSubsystem
 from subsystems.can_launchersubsystem import LauncherSubsystem
 from subsystems.can_armsubsystem import ArmSubsystem
 
+
+
 class RobotContainer:
     """
     This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -41,6 +43,8 @@ class RobotContainer:
 
         self.launcher = LauncherSubsystem()
         self.drive = DriveSubsystem(self)
+        self.field = wpilib.Field2d()
+        wpilib.SmartDashboard.putData("Field", self.field)
         self.arm = ArmSubsystem(self)
         self.configureButtonBindings()
 
