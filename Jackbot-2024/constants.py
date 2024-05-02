@@ -39,4 +39,4 @@ kLauncherDelay = 1
 
 kTankDriveSpeedMultiplier = 0.75
 kSimulatedTimeConstant = 0.02
-kSimulatedTurnRateConstant = 2
+kSimulatedTurnRateConstant = 3

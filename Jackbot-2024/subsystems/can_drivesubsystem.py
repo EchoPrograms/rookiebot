@@ -46,7 +46,7 @@ class DriveSubsystem(commands2.Subsystem):
     def calculateSim(self):
         leftPower = self.left1.get() + self.left2.get()
         rightPower = self.right1.get() + self.right2.get()
-        fowardSpeed = (leftPower + rightPower) * constants.kSimulatedTimeConstant * ((self.container.driverController.getRawAxis(3) * 2) + 1)
+        fowardSpeed = (leftPower + rightPower) * constants.kSimulatedTimeConstant
         self.robotData[0] += math.cos(math.radians(self.robotData[2])) * fowardSpeed
         self.robotData[1] += math.sin(math.radians(self.robotData[2])) * fowardSpeed
         self.robotData[2] += (rightPower - leftPower) * constants.kSimulatedTurnRateConstant
