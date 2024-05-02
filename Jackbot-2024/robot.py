@@ -56,6 +56,7 @@ class MyRobot(commands2.TimedCommandRobot):
 
     def teleopPeriodic(self) -> None:
         self.container.drive.calculateDriving()
+        self.container.drive.calculateSim()
 
     def testInit(self) -> None:
         # Cancels all running commands at the start of test mode

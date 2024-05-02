@@ -36,20 +36,15 @@
           "open": true
         }
       },
-      "Talon FX[2]": {
+      "Talon FX[3]": {
         "header": {
           "open": true
         }
       }
     },
-    "PWM Outputs": {
+    "Timing": {
       "window": {
-        "visible": true
-      }
-    },
-    "RoboRIO": {
-      "window": {
-        "visible": true
+        "visible": false
       }
     }
   },
@@ -65,7 +60,10 @@
         "left": 150,
         "right": 2961,
         "top": 79,
-        "width": 16.541748046875
+        "width": 16.541748046875,
+        "window": {
+          "visible": true
+        }
       }
     }
   },
@@ -92,9 +90,6 @@
     }
   },
   "NetworkTables Info": {
-    "Clients": {
-      "open": true
-    },
     "Server": {
       "Publishers": {
         "open": true
