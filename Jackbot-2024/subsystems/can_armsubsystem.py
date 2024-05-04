@@ -29,8 +29,7 @@ class ArmSubsystem(commands2.Subsystem):
         armValue = -self.container.driverController.getRawAxis(5) 
         encoderAngle = self.getEncoderDegrees()
         if abs(armValue) > 0.1:
-            self.container.armSegment.setAngle(self.container.armSegment.getAngle() + armValue * constants.kArmSpeedModifier * 4)
-            self.container.armSegment3d.setAngle(self.container.armSegment.getAngle() + armValue * constants.kArmSpeedModifier * 4)
+            self.container.armSegment3d.setAngle(self.container.armSegment3d.getAngle() + armValue * constants.kArmSpeedModifier * 4)
         if abs(armValue) > 0.1 and (encoderAngle < 330 or armValue < 0) and (encoderAngle > 240 or armValue > 0):
             self.armMotors.set(armValue * constants.kArmSpeedModifier  - constants.kMomentOfInertia * math.cos(math.radians(-(encoderAngle - 330))))
             
