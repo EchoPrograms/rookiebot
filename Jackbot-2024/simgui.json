@@ -61,7 +61,11 @@
   "NTProvider": {
     "types": {
       "/FMSInfo": "FMSInfo",
-      "/SmartDashboard/Field": "Field2d"
+      "/SmartDashboard/3dArm": "Mechanism2d",
+      "/SmartDashboard/Arm Mechanism": "Mechanism2d",
+      "/SmartDashboard/ArmMecgabusn": "Mechanism2d",
+      "/SmartDashboard/Field": "Field2d",
+      "/SmartDashboard/MyMechanism": "Mechanism2d"
     },
     "windows": {
       "/SmartDashboard/Field": {
@@ -92,14 +96,31 @@
         "open": true
       },
       "SmartDashboard": {
+        "3dArm": {
+          "open": true
+        },
         "Arm": {
           "open": true
+        },
+        "ArmMecgabusn": {
+          "double[]##v_/SmartDashboard/ArmMecgabusn/dims": {
+            "open": true
+          },
+          "open": true,
+          "root": {
+            "chassisS": {
+              "chassisB": {
+                "open": true
+              },
+              "open": true
+            },
+            "open": true
+          }
         },
         "Field": {
           "double[]##v_/SmartDashboard/Field/Robot": {
             "open": true
-          },
-          "open": true
+          }
         },
         "open": true
       }
