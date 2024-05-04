@@ -25,11 +25,11 @@ kRightMotor2Port = 4
 kDTCurrentLimit = 60
 
 # Launcher
-kFeederMotor = 5
-kLauncherMotor = 6
+kFeederMotor = 8
+kLauncherMotor = 7
 
-kArmMotor1 = 7
-kArmMotor2 = 8 
+kArmMotor1 = 5
+kArmMotor2 = 6
 
 kLauncherSpeed = 1
 kLaunchFeederSpeed = 1
@@ -44,3 +44,8 @@ kSimulatedTurnRateConstant = 3
 kStartingX = 1.25
 kStartingY = 7
 kStartingRot = 180
+
+kArmEncoderPort = 0
+kArmSpeedModifier = 0.5
+
+kMomentOfInertia = 0.1

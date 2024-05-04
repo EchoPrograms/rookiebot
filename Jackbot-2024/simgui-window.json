@@ -46,7 +46,7 @@
     "###Joysticks": {
       "Collapsed": "0",
       "Pos": "42,737",
-      "Size": "796,240"
+      "Size": "976,278"
     },
     "###Keyboard 0 Settings": {
       "Collapsed": "0",
@@ -60,13 +60,13 @@
     },
     "###NetworkTables": {
       "Collapsed": "0",
-      "Pos": "948,731",
+      "Pos": "1002,801",
       "Size": "937,265"
     },
     "###NetworkTables Info": {
       "Collapsed": "0",
-      "Pos": "670,212",
-      "Size": "750,145"
+      "Pos": "-298,949",
+      "Size": "750,440"
     },
     "###Other Devices": {
       "Collapsed": "0",
@@ -91,7 +91,7 @@
     "###System Joysticks": {
       "Collapsed": "0",
       "Pos": "5,145",
-      "Size": "192,218"
+      "Size": "232,254"
     },
     "###Timing": {
       "Collapsed": "0",
@@ -106,7 +106,7 @@
     "Robot State": {
       "Collapsed": "0",
       "Pos": "5,20",
-      "Size": "92,116"
+      "Size": "109,134"
     }
   }
 }
