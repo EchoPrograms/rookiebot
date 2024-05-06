@@ -1,31 +1,25 @@
-# Copyright (c) FIRST and other WPILib contributors.
-# Open Source Software; you can modify and/or share it under the terms of
-# the WPILib BSD license file in the root directory of this project.
-
-# Copyright (c) FIRST and other WPILib contributors.
-# Open Source Software; you can modify and/or share it under the terms of
-# the WPILib BSD license file in the root directory of this project.
+# DifferentialDrive.py
 
 import wpilib
 import wpilib.drive
 import commands2
 from rev import CANSparkMax
-import phoenix5 
+import phoenix5
 import time
 
 import constants
 import gyro
 
-# TODO: Edit code to be for rookie bot's drive (it is currently for parade bot)
 
-# create a motor controller translator to talonsrx
+# TODO: Add odom calculations
+
 class TalonMotorController(wpilib.interfaces.MotorController):
     def __init__(self, talon: phoenix5.TalonSRX, *args):
         super().__init__(*args)
         self.is_enabled = True
         self.talon = talon
 
-    def set(self, speed: float):
+    def set(self, speed: float) -> None:
         if self.is_enabled:
             self.talon.set(phoenix5.ControlMode.PercentOutput, speed)
         else:
@@ -34,21 +28,22 @@ class TalonMotorController(wpilib.interfaces.MotorController):
     def get(self) -> float:
         return self.talon.get()
 
-    def setInverted(self, isInverted: bool):
+    def setInverted(self, isInverted: bool) -> None:
         self.talon.setInverted(isInverted)
 
     def getInverted(self) -> bool:
         return self.talon.getInverted()
 
-    def disable(self):
+    def disable(self) -> None:
         self.is_enabled = False
         self.set(0)
 
-    def enable(self):
+    def enable(self) -> None:
         self.is_enabled = True
 
-    def stopMotor(self):
+    def stopMotor(self) -> None:
         self.set(0)
+
 
 class DifferentialDrive(commands2.Subsystem):
     def __init__(self) -> None:
@@ -58,24 +53,24 @@ class DifferentialDrive(commands2.Subsystem):
         self.frame_id = 0
 
         # Motor CAN IDs
-        kLeftSparkCANId = 9
-        kLeftTalon1CANId = 4
-        kLeftTalon2CANId = 6
+        self.kLeftSparkCANId = 9
+        self.kLeftTalon1CANId = 4
+        self.kLeftTalon2CANId = 6
 
-        kRightSparkCANId = 8
-        kRightTalon1CANId = 5
-        kRightTalon2CANId = 7
+        self.kRightSparkCANId = 8
+        self.kRightTalon1CANId = 5
+        self.kRightTalon2CANId = 7
 
-        kCurrentLimit = 40
+        self.kCurrentLimit = 40
 
         # Initialize motors
-        self.left_motor1 = CANSparkMax(kLeftSparkCANId, CANSparkMax.MotorType.kBrushless)
-        self.left_talon2 = phoenix5.TalonSRX(kLeftTalon1CANId)
-        self.left_talon3 = phoenix5.TalonSRX(kLeftTalon2CANId)
+        self.left_motor1 = CANSparkMax(self.kLeftSparkCANId, CANSparkMax.MotorType.kBrushless)
+        self.left_talon2 = phoenix5.TalonSRX(self.kLeftTalon1CANId)
+        self.left_talon3 = phoenix5.TalonSRX(self.kLeftTalon2CANId)
 
-        self.right_motor1 = CANSparkMax(kRightSparkCANId, CANSparkMax.MotorType.kBrushless)
-        self.right_talon2 = phoenix5.TalonSRX(kRightTalon1CANId)
-        self.right_talon3 = phoenix5.TalonSRX(kRightTalon2CANId)
+        self.right_motor1 = CANSparkMax(self.kRightSparkCANId, CANSparkMax.MotorType.kBrushless)
+        self.right_talon2 = phoenix5.TalonSRX(self.kRightTalon1CANId)
+        self.right_talon3 = phoenix5.TalonSRX(self.kRightTalon2CANId)
 
         # Initialize Talon Motor Controllers
         self.left_motor2 = TalonMotorController(self.left_talon2)
@@ -89,8 +84,8 @@ class DifferentialDrive(commands2.Subsystem):
         self.right_motor1.setIdleMode(CANSparkMax.IdleMode.kBrake)
 
         # Set current limit on motors
-        self.left_motor1.setSmartCurrentLimit(kCurrentLimit)
-        self.right_motor1.setSmartCurrentLimit(kCurrentLimit)
+        self.left_motor1.setSmartCurrentLimit(self.kCurrentLimit)
+        self.right_motor1.setSmartCurrentLimit(self.kCurrentLimit)
 
         # Set motors to reverse so that positive voltages move the robot forward
         self.left_motor1.setInverted(True)
@@ -121,18 +116,20 @@ class DifferentialDrive(commands2.Subsystem):
         # Initialize drive
         self.drive = wpilib.drive.DifferentialDrive(self.leftMotors, self.rightMotors)
 
-    def periodic(self):
-        '''
-        every 50 calls print out the encoder values
-        '''
+    def periodic(self, timestamp: float) -> None:
+        """
+        Periodic function called every 20ms.
+
+        :param timestamp: the current timestamp
+        """
         self.frame_id += 1
         if self.frame_id % 50 == 0:
-            print("System Time:", time.time())
+            print("System Time:", timestamp)
             print("Left Encoder: ", self.leftEncoder.getPosition())
             print("Right Encoder: ", self.rightEncoder.getPosition())
             print("done")
 
-    def arcadeDrive(self, fwd: float, rot: float):
+    def arcadeDrive(self, fwd: float, rot: float) -> None:
         """
         Drives the robot using arcade controls.
 
@@ -141,18 +138,18 @@ class DifferentialDrive(commands2.Subsystem):
         """
         self.drive.arcadeDrive(fwd, rot)
 
-    def stop(self):
+    def stop(self) -> None:
         """
         Stops the drive from moving.
         """
         self.arcadeDrive(0, 0)
 
-    def resetEncoders(self):
+    def resetEncoders(self) -> None:
         """Resets the drive encoders to currently read a position of 0."""
         self.leftEncoder.reset()
         self.rightEncoder.reset()
 
-    def getAverageEncoderDistance(self):
+    def getAverageEncoderDistance(self) -> float:
         """
         Gets the average distance of the two encoders.
 
@@ -176,10 +173,10 @@ class DifferentialDrive(commands2.Subsystem):
         """
         return self.rightEncoder
 
-    def setMaxOutput(self, maxOutput: float):
+    def setMaxOutput(self, maxOutput: float) -> None:
         """
         Sets the max output of the drive. Useful for scaling the drive to drive more slowly.
 
         :param maxOutput: the maximum output to which the drive will be constrained
         """
-        self.drive.setMaxOutput(maxOutput) 
+        self.drive.setMaxOutput(maxOutput)
