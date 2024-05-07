@@ -12,6 +12,7 @@ import gyro
 
 
 # TODO: Add odom calculations
+# TODO: Update motor controller types
 
 class TalonMotorController(wpilib.interfaces.MotorController):
     def __init__(self, talon: phoenix5.TalonSRX, *args):
@@ -49,6 +50,9 @@ class DifferentialDrive(commands2.Subsystem):
     def __init__(self) -> None:
         """Creates a new DriveSubsystem"""
         super().__init__()
+        
+        # Initialize gyro
+        self.gyro = gyro.Gyro.get_instance()
 
         self.frame_id = 0
 
@@ -129,14 +133,15 @@ class DifferentialDrive(commands2.Subsystem):
             print("Right Encoder: ", self.rightEncoder.getPosition())
             print("done")
 
-    def arcadeDrive(self, fwd: float, rot: float) -> None:
-        """
-        Drives the robot using arcade controls.
+    def arcadeDrive(self, fwd: float, rot: float, gyro: gyro.Gyro) -> None:
+        # Calculate the rotational input based on the robot's heading
+        rotational_input = rot - gyro.get_heading()
 
-        :param fwd: the commanded forward movement
-        :param rot: the commanded rotation
-        """
-        self.drive.arcadeDrive(fwd, rot)
+        # Limit the rotational input to a reasonable range
+        rotational_input = max(-1.0, min(1.0, rotational_input))
+
+        # Drive the robot using arcade controls with the updated rotational input
+        self.drive.arcadeDrive(fwd, rotational_input)
 
     def stop(self) -> None:
         """
