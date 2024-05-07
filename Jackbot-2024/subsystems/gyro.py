@@ -3,11 +3,16 @@ import navx
 import wpilib
 import wpilib.geometry
 
-# I put odom calculations in gyro, not drivetrain
+# TODO: Double-check the encoder channel assignments and ensure that they are correct
+# TODO: Double-check the gyro connections and ensure that it is properly calibrated
+# TODO: Make sure the encoders are equally spaced on either side of the robot and that the wheel diameters are identical
+# TODO: Test the 'get_(measurement)' methods
+# TODO: Test the reset_angle and reset_odometry methods to ensure they properly reset the angle and odometry.
+# TODO: Ensure that the periodic method is called periodically in the main robot loop to update the odometry.
 
 class Gyro:
     _instance = None
-    
+
     @classmethod
     def get_instance(cls):
         if not cls._instance:
