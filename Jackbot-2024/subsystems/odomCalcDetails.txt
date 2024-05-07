@@ -1,0 +1,17 @@
+# Here is a summary of how the odometry calculations work in the code:
+
+The wpilib.geometry.Odometry object is initialized with the starting position and angle of the robot in the __init__ method.
+
+The get_angle method returns the current angle of the robot as reported by the navx sensor.
+
+The get_relative_pose2d method returns the location of the robot relative to the starting point, based on the current position and angle.
+
+The reset_angle method resets the angle of the navx sensor and the odometry to zero.
+
+The periodic method is called periodically to update the odometry based on the current readings from the navx sensor and the left and right encoders. It calculates the new position of the robot based on the distance traveled by the left and right wheels and the current angle of the robot.
+
+The reset_odometry method resets the odometry to the starting position and angle.
+
+The get_distance_driven, get_heading, get_pose, get_velocity, get_yaw_rate, get_rotation_matrix, get_translation_vector, get_rotation_vector, get_distance_driven_in_inches, and get_distance_driven_in_feet methods are helper methods that allow you to access various pieces of information about the robot's position, heading, and movement.
+
+# To take into account only the calculations for feet and inches, you can use the get_distance_driven_in_feet method to get the distance driven by the robot in feet. This method calculates the distance driven by the robot in meters using the get_distance_driven method, and then converts it to feet by dividing by 12.0.
