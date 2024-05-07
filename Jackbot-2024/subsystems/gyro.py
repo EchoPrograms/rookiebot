@@ -3,9 +3,11 @@ import navx
 import wpilib
 import wpilib.geometry
 
+# I put odom calculations in gyro, not drivetrain
+
 class Gyro:
     _instance = None
-
+    
     @classmethod
     def get_instance(cls):
         if not cls._instance:
@@ -52,3 +54,83 @@ class Gyro:
     def reset_odometry(self):
         # Reset the odometry to the starting position and angle
         self.odometry.resetPosition(self.start_pose, self.get_angle())
+    
+    def get_distance_driven(self):
+
+        # Calculate the distance driven by the robot
+        left_distance = self.left_encoder.getDistance() 
+        right_distance = self.right_encoder.getDistance()
+
+        distance = (left_distance + right_distance) / 2.0
+
+        return distance
+
+    def get_heading(self):
+
+        #Get the current heading of the robot
+        return self.get_angle() % 360.0
+
+    def get_pose(self):
+
+        # Get the current pose of the robot
+        return self.odometry.getPoseMeters()
+
+    def get_velocity(self):
+
+        # Calculate the velocity of the robot
+        left_velocity = self.left_encoder.getRate() 
+        right_velocity = self.right_encoder.getRate()
+
+        velocity = (left_velocity + right_velocity) / 2.0
+
+        return velocity
+
+    def get_yaw_rate(self):
+
+        # Get the current yaw rate of the robot
+        return self.ahrs.getRate()
+
+    def get_rotation_matrix(self):
+
+        # Get the rotation matrix of the robot
+        angle = self.get_angle()
+
+        rotation_matrix = wpilib.geometry.Rotation2d(wpilib.math.angle.Degrees(angle))
+
+        return rotation_matrix
+
+    def get_translation_vector(self):
+
+        # Get the translation vector of the robot
+        pose = self.get_pose()
+
+        translation_vector = pose.getTranslation()
+
+        return translation_vector
+
+    def get_rotation_vector(self):
+
+        # Get the rotation vector of the robot
+        pose = self.get_pose()
+
+        rotation_vector = pose.getRotation()
+
+        return rotation_vector
+
+    def get_distance_driven_in_inches(self):
+
+        # Calculate the distance driven by the robot in inches
+        distance = self.get_distance_driven()
+
+        distance_in_inches = distance * 25.4
+
+        return distance_in_inches
+
+    def get_distance_driven_in_feet(self):
+
+        # Calculate the distance driven by the robot in feet
+     distance = self.get_distance_driven()
+
+     distance_in_feet = distance / 12.0
+
+     return distance_in_feet
