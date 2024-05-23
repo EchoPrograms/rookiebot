@@ -25,16 +25,16 @@ kRightMotor2Port = 4
 kDTCurrentLimit = 60
 
 # Launcher
-kFeederMotor = 8
-kLauncherMotor = 7
-
+kFeederMotor = 7
+kLauncherMotor1 = 8
+kLauncherMotor2 = 9
 kArmMotor1 = 5
 kArmMotor2 = 6
 
 kLauncherSpeed = 1
 kLaunchFeederSpeed = 1
-kIntakeLauncherSpeed = -1
-kIntakeFeederSpeed = -0.2
+
+kIntakeFeederSpeed = -1
 kLauncherDelay = 1
 
 kTankDriveSpeedMultiplier = 0.75

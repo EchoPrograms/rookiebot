@@ -5,13 +5,13 @@
   "MainWindow": {
     "GLOBAL": {
       "fps": "120",
-      "height": "720",
-      "maximized": "0",
+      "height": "1009",
+      "maximized": "1",
       "style": "0",
       "userScale": "2",
-      "width": "1280",
-      "xpos": "1527",
-      "ypos": "268"
+      "width": "1920",
+      "xpos": "0",
+      "ypos": "29"
     }
   },
   "Table": {
@@ -45,7 +45,7 @@
     },
     "###Joysticks": {
       "Collapsed": "0",
-      "Pos": "42,701",
+      "Pos": "478,664",
       "Size": "796,240"
     },
     "###Keyboard 0 Settings": {

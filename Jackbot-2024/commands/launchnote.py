@@ -15,9 +15,9 @@ class LaunchNote(commands2.Command):
         self.launcher = launcher
         self.addRequirements(launcher)
 
-    def initialize(self) -> None:
-        self.launcher.setLaunchWheel(constants.kLauncherSpeed)
-        self.launcher.setFeedWheel(constants.kLaunchFeederSpeed)
+    #def initialize(self) -> None:
+        #self.launcher.setLaunchWheel(constants.kLauncherSpeed)
+        #self.launcher.setFeedWheel(constants.kLaunchFeederSpeed)
 
     def isFinished(self) -> bool:
         return False

@@ -16,8 +16,8 @@ class PrepareLaunch(commands2.Command):
         self.launcher = launcher
         self.addRequirements(launcher)
 
-    def initialize(self) -> None:
-        self.launcher.setLaunchWheel(constants.kLauncherSpeed)
+    #def initialize(self) -> None:
+        #self.launcher.setLaunchWheel(constants.kLauncherSpeed)
 
     def isFinished(self) -> bool:
         return False

@@ -41,7 +41,7 @@ class RobotContainer:
         )
 
         
-
+        
         # Simulation widgets
 
         self.field = wpilib.Field2d()
@@ -63,21 +63,9 @@ class RobotContainer:
 
         # The robot's subsystems
 
-        self.launcher = LauncherSubsystem()
+        self.launcher = LauncherSubsystem(self)
         self.drive = DriveSubsystem(self)
         self.arm = ArmSubsystem(self)
-
-        self.configureButtonBindings()
-
-    def configureButtonBindings(self):
-        self.operatorController.a().whileTrue(
-            PrepareLaunch(self.launcher)
-            .withTimeout(constants.kLauncherDelay)
-            .andThen(LaunchNote(self.launcher))
-            .handleInterrupt(lambda: self.launcher.stop())
-        )
-
-        self.operatorController.leftBumper().whileTrue(self.launcher.getIntakeCommand())
 
     def getAutonomousCommand(self) -> commands2.Command:
         return Autos.exampleAuto(self.drive)
