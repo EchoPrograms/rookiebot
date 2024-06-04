@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 #
 # Copyright (c) FIRST and other WPILib contributors.
 # Open Source Software; you can modify and/or share it under the terms of
@@ -8,6 +7,7 @@
 import typing
 import wpilib
 import commands2
+from subsystems.vision_system import VisionSystem
 
 from robotcontainer import RobotContainer
 
@@ -30,8 +30,12 @@ class MyRobot(commands2.TimedCommandRobot):
         # autonomous chooser on the dashboard.
         self.container = RobotContainer()
 
+        # Initialize the vision system
+        self.vision_system = VisionSystem()
+
     def robotPeriodic(self) -> None:
         self.container.drive.calculateSim()
+        self.vision_system.process_images()  # Call the vision system's image processing method
 
     def disabledInit(self) -> None:
         """This function is called once each time the robot enters Disabled mode."""
