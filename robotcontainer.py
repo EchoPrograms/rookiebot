@@ -20,7 +20,7 @@ from commands.preparelaunch import PrepareLaunch
 from subsystems.can_drivesubsystem import DriveSubsystem
 from subsystems.can_launchersubsystem import LauncherSubsystem
 from subsystems.can_armsubsystem import ArmSubsystem
-
+from subsystems.vision_system import VisionSystem  # Import the VisionSystem class
 
 
 class RobotContainer:
@@ -40,8 +40,6 @@ class RobotContainer:
             constants.kOperatorControllerPort
         )
 
-        
-        
         # Simulation widgets
 
         self.field = wpilib.Field2d()
@@ -58,7 +56,6 @@ class RobotContainer:
         self.robotSegments3d.append(self.robotSegments3d[len(self.robotSegments3d)-1].appendLigament("intake4", 0.203504, 180 - 85.209965, 5, wpilib.Color8Bit(150, 150, 150)))
         self.robotSegments3d.append(self.robotSegments3d[len(self.robotSegments3d)-1].appendLigament("intake5", 0.089631, 180 - 85.208210, 5, wpilib.Color8Bit(150, 150, 150)))
 
-
         wpilib.SmartDashboard.putData("3dArm", self.armMechanism3d)
 
         # The robot's subsystems
@@ -66,10 +63,7 @@ class RobotContainer:
         self.launcher = LauncherSubsystem(self)
         self.drive = DriveSubsystem(self)
         self.arm = ArmSubsystem(self)
+        self.vision_system = VisionSystem(self)  # Create a VisionSystem instance
 
     def getAutonomousCommand(self) -> commands2.Command:
         return Autos.exampleAuto(self.drive)
-
-    
-
-        
